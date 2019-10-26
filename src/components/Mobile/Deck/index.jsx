@@ -4,7 +4,7 @@ import { useGesture } from 'react-with-gesture';
 import styles from './styles.module.css';
 
 import Card from '../Card';
-import data from '../../../data.js';
+// import data from '../../../data.js';
 
 const to = i => ({
   x: 0,
@@ -19,7 +19,15 @@ const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r /
     10}deg) rotateZ(${r}deg) scale(${s})`;
 
-function Deck() {
+function Deck({ surveys }) {
+  if (!surveys) return null;
+
+  console.log(surveys);
+
+  const data = surveys.showTextarea
+    ? [{ type: 'custom' }].concat(surveys.questions)
+    : surveys.questions;
+
   const [gone, setGone] = useState({});
 
   const [props, set] = useSprings(data.length, i => ({
@@ -80,8 +88,7 @@ function Deck() {
 
   return (
     <>
-      <h1 className={styles.heading}>I'm leaving because...</h1>
-
+      <h1 className={styles.heading}>{surveys.title}</h1>
       {props.map(({ x, y, rot, scale }, i) => (
         <Card
           key={i}
