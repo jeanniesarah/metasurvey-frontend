@@ -16,7 +16,7 @@ const App = () => {
       .then(setSurveys);
   }
 
-  return <>{isMobile ? <Mobile surveys={surveys} /> : <Desktop />}</>;
+  return isMobile ? <Mobile surveys={surveys} /> : <Desktop />;
 };
 
 export default App;
