@@ -29,7 +29,7 @@ body {
 #root > div {
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 70vh;
   will-change: transform;
   display: flex;
   align-items: center;
@@ -44,18 +44,12 @@ body {
   background-position: center center;
   width: 300px;
   max-width: 300px;
-  height: 550px;
   max-height: 570px;
+  padding: 25px 15px;
   will-change: transform;
   border-radius: 10px;
   box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),
     0 10px 10px -10px rgba(50, 50, 73, 0.3);
-}
-
-img {
-  height: 380px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
 button[aria-label="previous"],
@@ -67,28 +61,6 @@ button[aria-label="next"] {
 h2 {
   display: inline-block;
   margin-right: 10px;
-}
-
-h2:nth-of-type(2) {
-  opacity: 0.7;
-  font-size: 1.35rem;
-}
-
-h5 {
-  margin-top: -15px;
-  margin-left: 2px;
-  color: lightgray;
-}
-h5:last-of-type {
-  color: darkgray;
-}
-
-.card > div {
-  height: 380px !important;
-}
-
-.card {
-  height: 500px !important;
 }
 
 .slider-control-bottomcenter {

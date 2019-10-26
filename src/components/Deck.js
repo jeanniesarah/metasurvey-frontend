@@ -66,18 +66,26 @@ function Deck() {
     }
   );
 
-  return props.map(({ x, y, rot, scale }, i) => (
-    <Card
-      i={i}
-      x={x}
-      y={y}
-      rot={rot}
-      scale={scale}
-      trans={trans}
-      data={data}
-      bind={bind}
-    />
-  ));
+  return (
+    <>
+      <h1 style={{ textAlign: "center", marginTop: "100px" }}>
+        I'm leaving because...
+      </h1>
+
+      {props.map(({ x, y, rot, scale }, i) => (
+        <Card
+          i={i}
+          x={x}
+          y={y}
+          rot={rot}
+          scale={scale}
+          trans={trans}
+          data={data}
+          bind={bind}
+        />
+      ))}
+    </>
+  );
 }
 
 export default Deck;
