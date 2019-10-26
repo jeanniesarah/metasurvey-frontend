@@ -78,6 +78,9 @@ export default props => {
                 'https://meta-survey-app.herokuapp.com/api/survey/5db4294685535d7cc3ffa98d',
                 {
                   method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
                   body: JSON.stringify(answer),
                 }
               )
