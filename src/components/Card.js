@@ -37,11 +37,7 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number,
-  distance: PropTypes.string,
-  text: PropTypes.string,
-  pics: PropTypes.array
+  text: PropTypes.string
 };
 
 export default Card;
