@@ -1,12 +1,17 @@
 import React from 'react';
 
 const Checkbox = props => {
-  const { label, otherProps } = props;
-
+  const { label, onChange, otherProps } = props;
   return (
     <li>
-      <input type="checkbox" {...otherProps} />
-      {label}
+      <label>
+        <input
+          type="checkbox"
+          onChange={e => onChange(e.target.checked)}
+          {...otherProps}
+        />{' '}
+        {label}
+      </label>
     </li>
   );
 };

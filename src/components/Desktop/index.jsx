@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Checkbox from './components/Checkbox';
 import styles from './Desktop.module.css';
 import illustrationSrc from './img.png';
+import { generateAnswersPayload } from '../../lib/data';
 
 /*
 data example
@@ -30,17 +31,20 @@ const testData = {
   ],
 };
 
-const Desktop = ({ surveys }) => {
+const Desktop = ({ surveys, onSave }) => {
   if (!surveys) return null;
-  console.log(surveys);
 
   const [answers, setAnswers] = useState({});
+  const [textareaText, setTextareaText] = useState('');
 
-  const { title, questions } = surveys; // TODO
-  console.log(answers);
+  const { title, questions, showTextarea } = surveys;
 
-  const setSingleAnswer = id => value =>
+  const setSingleAnswer = id => value => {
     setAnswers({ ...answers, [id]: value });
+  };
+  const save = () => {
+    onSave(generateAnswersPayload(answers, textareaText, surveys));
+  };
 
   return (
     <div className={styles.Desktop}>
@@ -63,6 +67,14 @@ const Desktop = ({ surveys }) => {
             );
           })}
         </ul>
+        {showTextarea && (
+          <textarea
+            value={textareaText}
+            onChange={e => setTextareaText(e.target.value)}
+            placeholder="Tell us what you think..."
+          ></textarea>
+        )}
+        <button onClick={save}>Save</button>
       </div>
     </div>
   );

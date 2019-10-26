@@ -2,6 +2,19 @@ import React from 'react';
 import { animated, interpolate } from 'react-spring/hooks';
 import styles from './styles.module.css';
 
+const generateAnswer = (gone, feedback, data) => ({
+  comment: feedback,
+  answers: data
+    .map(question => {
+      const { id } = question;
+      return {
+        ...question,
+        value: gone[id],
+      };
+    })
+    .slice(1),
+});
+
 export default props => {
   const [feedback, setFeedback] = React.useState('');
   const { i, x, y, rot, scale, trans, bind, data, gone } = props;
@@ -57,10 +70,7 @@ export default props => {
             type="button"
             className={styles.submit}
             onClick={() => {
-              console.log({
-                gone,
-                feedback,
-              });
+              console.log(generateAnswer(gone, feedback, data));
             }}
           >
             Submit

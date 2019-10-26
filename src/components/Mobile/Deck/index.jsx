@@ -49,16 +49,16 @@ function Deck({ surveys }) {
       const dir = xDir < 0 ? -1 : 1;
 
       if (!down && trigger) {
-        gone[data[index].text] = dir === 1;
+        gone[data[index].id] = dir === 1;
         setGone({
           ...gone,
-          [data[index].text]: dir === 1,
+          [data[index].id]: dir === 1,
         });
       }
 
       set(i => {
         if (index !== i) return;
-        const isGone = gone[data[index].text] !== undefined;
+        const isGone = gone[data[index].id] !== undefined;
 
         const x = isGone
           ? (200 + window.innerWidth) * dir
