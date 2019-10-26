@@ -48,7 +48,7 @@ function Deck() {
 
         const x = isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0;
 
-        const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0);
+        const rot = xDelta / 100 + dir * 10 * velocity;
 
         const scale = down ? 1.1 : 1;
         return {
