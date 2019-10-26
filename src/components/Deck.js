@@ -74,6 +74,7 @@ function Deck() {
 
       {props.map(({ x, y, rot, scale }, i) => (
         <Card
+          key={i}
           i={i}
           x={x}
           y={y}
