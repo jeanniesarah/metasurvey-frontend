@@ -1,6 +1,29 @@
 .heading {
   margin: 30px;
+  margin-bottom: 0;
+  line-height: 1;
   font-weight: bold;
   text-align: center;
-  color: white;
+  color: #5871b1;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.logoText {
+  font-size: 12px;
+  font-weight: 300;
+  margin-right: 10px;
+  position: relative;
+  top: -2px;
 }

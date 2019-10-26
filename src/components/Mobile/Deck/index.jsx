@@ -4,6 +4,8 @@ import { useGesture } from 'react-with-gesture';
 import styles from './styles.module.css';
 
 import Card from '../Card';
+
+import logo from '../../logo.png';
 // import data from '../../../data.js';
 
 const to = i => ({
@@ -103,6 +105,10 @@ function Deck({ surveys }) {
           gone={gone}
         />
       ))}
+      <div className={styles.logoContainer}>
+        <p className={styles.logoText}>Powered by</p>
+        <img src={logo} className={styles.logo} alt="Logo" />
+      </div>
     </>
   );
 }
