@@ -3,6 +3,9 @@ import Desktop from './components/Desktop';
 import Mobile from './components/Mobile';
 
 const App = () => {
+  const isMobile =
+    typeof window.orientation !== 'undefined' ||
+    navigator.userAgent.indexOf('IEMobile') !== -1;
   const [surveys, setSurveys] = React.useState(undefined);
 
   if (!surveys) {
@@ -13,12 +16,7 @@ const App = () => {
       .then(setSurveys);
   }
 
-  return (
-    <>
-      <Desktop />
-      <Mobile surveys={surveys} />
-    </>
-  );
+  return <>{isMobile ? <Mobile surveys={surveys} /> : <Desktop />}</>;
 };
 
 export default App;
