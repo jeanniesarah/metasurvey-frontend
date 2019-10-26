@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
 
-import Card from "./Card";
-import data from "../data.js";
-
-import "../styles/Deck.css";
+import Card from "../Card";
+import data from "../../data.js";
 
 const to = i => ({
   x: 0,

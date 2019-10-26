@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { animated, interpolate } from "react-spring/hooks";
+import styles from "./styles.module.css";
 
 class Card extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class Card extends React.Component {
     return (
       <animated.div
         key={i}
-        className="cardWrapper"
+        className={styles.cardWrapper}
         style={{
           transform: interpolate(
             [x, y],
@@ -20,17 +21,17 @@ class Card extends React.Component {
       >
         <animated.div
           {...bind(i)}
-          className="cardInner"
+          className={styles.cardInner}
           style={{
             transform: interpolate([rot, scale], trans)
           }}
         >
-          <div className="card">
-            <div className="pillbox">
-              <p className="red">←No</p>
-              <p className="green">Yes→</p>
+          <div className={styles.card}>
+            <div className={styles.pillbox}>
+              <p className={styles.red}>←No</p>
+              <p className={styles.green}>Yes→</p>
             </div>
-            <p>{text}</p>
+            <p className={styles.text}>{text}</p>
           </div>
         </animated.div>
       </animated.div>
