@@ -20,18 +20,18 @@ const Survey = ({ surveys, onSave }) => {
     <div className={styles.Survey}>
       <h2 className={styles.title}>Why did you uninstall my App?</h2>
       <p>Check all that apply:</p>
+
       <ul className={styles.CheckboxList}>
-        {questions.map(question => {
-          return (
-            <Checkbox
-              key={question.id}
-              checked={answers[question.id] === true}
-              label={question.text}
-              onChange={setSingleAnswer(question.id)}
-            />
-          );
-        })}
+        {questions.map(question => (
+          <Checkbox
+            key={question.id}
+            checked={answers[question.id] === true}
+            label={question.text}
+            onChange={setSingleAnswer(question.id)}
+          />
+        ))}
       </ul>
+
       {showTextarea && (
         <textarea
           className={styles.TextFeedback}
@@ -40,6 +40,7 @@ const Survey = ({ surveys, onSave }) => {
           placeholder="Tell us what you think..."
         ></textarea>
       )}
+
       <button className={styles.Submit} onClick={save}>
         Send
       </button>
