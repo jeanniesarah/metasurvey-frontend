@@ -10,6 +10,7 @@ class Card extends React.Component {
     return (
       <animated.div
         key={i}
+        className="cardWrapper"
         style={{
           transform: interpolate(
             [x, y],
@@ -19,16 +20,17 @@ class Card extends React.Component {
       >
         <animated.div
           {...bind(i)}
+          className="cardInner"
           style={{
             transform: interpolate([rot, scale], trans)
           }}
         >
           <div className="card">
             <div className="pillbox">
-              <h5 className="red">←No</h5>
-              <h5 className="green">Yes→</h5>
+              <p className="red">←No</p>
+              <p className="green">Yes→</p>
             </div>
-            <h5>{text}</h5>
+            <p>{text}</p>
           </div>
         </animated.div>
       </animated.div>
