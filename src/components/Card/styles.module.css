@@ -11,8 +11,9 @@
 .cardInner {
   padding: 5px;
   background-color: white;
-  max-width: 250px;
-  padding: 0 25px;
+  width: 250px;
+  min-height: 300px;
+  padding: 0 20px;
   will-change: transform;
   border-radius: 10px;
   box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),
@@ -20,7 +21,7 @@
 }
 
 .text {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .pillbox {
@@ -31,10 +32,10 @@
 
 .red {
   color: #ff4136;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .green {
   color: #2ecc40;
-  font-size: 30px;
+  font-size: 25px;
 }
