@@ -20,7 +20,7 @@ const trans = (r, s) =>
     10}deg) rotateZ(${r}deg) scale(${s})`;
 
 function Deck() {
-  const [gone] = useState(() => new Set());
+  const [gone, setGone] = useState({});
 
   const [props, set] = useSprings(data.length, i => ({
     ...to(i),
@@ -40,11 +40,17 @@ function Deck() {
 
       const dir = xDir < 0 ? -1 : 1;
 
-      if (!down && trigger) gone.add(index);
+      if (!down && trigger) {
+        gone[data[index].text] = dir === 1;
+        setGone({
+          ...gone,
+          [data[index].text]: dir === 1
+        });
+      }
 
       set(i => {
         if (index !== i) return;
-        const isGone = gone.has(index);
+        const isGone = gone[data[index].text] !== undefined;
 
         const x = isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0;
 
@@ -80,6 +86,7 @@ function Deck() {
           trans={trans}
           data={data}
           bind={bind}
+          gone={gone}
         />
       ))}
     </>

@@ -29,10 +29,10 @@
   align-items: center;
   justify-content: space-between;
   opacity: 0;
-  transition: opacity 200ms;
+  transition: opacity 0.2s;
 }
 
-.cardInner:active .pillbox {
+.cardInner:hover .pillbox {
   opacity: 1;
 }
 
