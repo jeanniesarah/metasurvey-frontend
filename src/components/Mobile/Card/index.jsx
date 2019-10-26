@@ -4,15 +4,13 @@ import styles from './styles.module.css';
 
 const generateAnswer = (gone, feedback, data) => ({
   comment: feedback,
-  answers: data
-    .map(question => {
-      const { id } = question;
-      return {
-        ...question,
-        value: gone[id],
-      };
-    })
-    .slice(1),
+  answers: data.map(question => {
+    const { id } = question;
+    return {
+      ...question,
+      value: gone[id],
+    };
+  }),
 });
 
 export default props => {
@@ -70,7 +68,9 @@ export default props => {
             type="button"
             className={styles.submit}
             onClick={() => {
-              console.log(generateAnswer(gone, feedback, data));
+              console.log(
+                generateAnswer(gone, feedback, data.slice(1))
+              );
             }}
           >
             Submit
