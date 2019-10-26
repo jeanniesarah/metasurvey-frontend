@@ -30,23 +30,27 @@ const testData = {
 
 const Desktop = ({ surveys }) => {
 	if (!surveys) return null;
-	console.log(surveys);
 
 	const [answers, setAnswers] = useState({});
 
-	const { title, questions } = surveys; // TODO
-	console.log(answers);
+	const { title, questions } = surveys;
+	console.log('answers', answers);
 
-	const setSingleAnswer = (id) => (value) => setAnswers({ ...answers, [id]: value });
+	const setSingleAnswer = (id) => (value) => { setAnswers({ ...answers, [id]: value }); }
+	const save = () => { console.log(answers); }
 
 	return <div>
 		<div>{ title }</div>
 		<div>
 			{questions.map(question => {
-				return <Checkbox key={question.id} checked={answers[question.id] === true} label={question.text}
-						  onChange={setSingleAnswer(question.id)}/>
+				return <Checkbox key={question.id}
+								 checked={answers[question.id] === true}
+								 label={question.text}
+								 onChange={setSingleAnswer(question.id)}
+				/>
 			})}
 		</div>
+		<button onClick={save}>Save</button>
 	</div>
 };
 
