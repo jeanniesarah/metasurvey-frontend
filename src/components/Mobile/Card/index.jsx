@@ -1,26 +1,29 @@
-import React from "react";
-import { animated, interpolate } from "react-spring/hooks";
-import styles from "./styles.module.css";
+import React from 'react';
+import { animated, interpolate } from 'react-spring/hooks';
+import styles from './styles.module.css';
 
 export default props => {
-  const [feedback, setFeedback] = React.useState("");
+  const [feedback, setFeedback] = React.useState('');
   const { i, x, y, rot, scale, trans, bind, data, gone } = props;
   const { text, type } = data[i];
 
-  const isTextarea = type === "custom";
+  const isTextarea = type === 'custom';
 
   return !isTextarea ? (
     <animated.div
       className={styles.cardWrapper}
       style={{
-        transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)
+        transform: interpolate(
+          [x, y],
+          (x, y) => `translate3d(${x}px,${y}px,0)`
+        ),
       }}
     >
       <animated.div
         {...bind(i)}
         className={styles.cardInner}
         style={{
-          transform: interpolate([rot, scale], trans)
+          transform: interpolate([rot, scale], trans),
         }}
       >
         <div className={styles.card}>
@@ -36,7 +39,10 @@ export default props => {
     <animated.div
       className={styles.cardWrapper}
       style={{
-        transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)
+        transform: interpolate(
+          [x, y],
+          (x, y) => `translate3d(${x}px,${y}px,0)`
+        ),
       }}
     >
       <div className={styles.cardInner}>
@@ -53,7 +59,7 @@ export default props => {
             onClick={() => {
               console.log({
                 gone,
-                feedback
+                feedback,
               });
             }}
           >
