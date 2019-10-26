@@ -58,7 +58,7 @@
   resize: none;
   margin: 20px 0;
   border: none;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .textarea:focus,
@@ -67,15 +67,11 @@
 }
 
 .submit {
-  appearance: none;
-  margin-bottom: 20px;
-  border: none;
-}
-
-.submit {
+  margin-bottom: 16px;
   cursor: pointer;
   border: none;
   color: white;
+  font-size: 20px;
   padding: 10px 20px;
   border-radius: 10px;
   font-weight: bold;
