@@ -63,6 +63,10 @@ h2 {
   margin-right: 10px;
 }
 
+h5 {
+  font-size: 30px;
+}
+
 .slider-control-bottomcenter {
   bottom: -15px !important;
 }
