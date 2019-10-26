@@ -24,11 +24,7 @@ const trans = (r, s) =>
 function Deck({ surveys }) {
   if (!surveys) return null;
 
-  console.log(surveys);
-
-  const data = surveys.showTextarea
-    ? [{ type: 'custom' }].concat(surveys.questions)
-    : surveys.questions;
+  const data = [{ type: 'custom' }].concat(surveys.questions);
 
   const [gone, setGone] = useState({});
 
