@@ -74,8 +74,13 @@ export default props => {
                 data.slice(1)
               );
 
+              const urlParams = new URLSearchParams(
+                window.location.search
+              );
+              const surveyId = urlParams.get('survey_id');
+
               fetch(
-                'https://meta-survey-app.herokuapp.com/api/survey/5db4294685535d7cc3ffa98d',
+                `https://meta-survey-app.herokuapp.com/api/survey/${surveyId}`,
                 {
                   method: 'POST',
                   headers: {

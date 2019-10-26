@@ -2,7 +2,7 @@ import React from 'react';
 import Desktop from './components/Desktop';
 import Mobile from './components/Mobile';
 
-const saveAnswersToServer = (payload) => {
+const saveAnswersToServer = payload => {
   // TODO POST to server here
   console.log('payload', payload);
 };
@@ -13,15 +13,22 @@ const App = () => {
     navigator.userAgent.indexOf('IEMobile') !== -1;
   const [surveys, setSurveys] = React.useState(undefined);
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const surveyId = urlParams.get('survey_id');
+
   if (!surveys) {
     fetch(
-      'https://meta-survey-app.herokuapp.com/api/survey/5db4294685535d7cc3ffa98d'
+      `https://meta-survey-app.herokuapp.com/api/survey/${surveyId}`
     )
       .then(body => body.json())
       .then(setSurveys);
   }
 
-  return isMobile ? <Mobile surveys={surveys} onSave={saveAnswersToServer} /> : <Desktop surveys={surveys} onSave={saveAnswersToServer} />;
+  return isMobile ? (
+    <Mobile surveys={surveys} onSave={saveAnswersToServer} />
+  ) : (
+    <Desktop surveys={surveys} onSave={saveAnswersToServer} />
+  );
 };
 
 export default App;
