@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
+import styles from "./styles.module.css";
 
 import Card from "../Card";
 import data from "../../data.js";
@@ -66,9 +67,7 @@ function Deck() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center", marginTop: "100px" }}>
-        I'm leaving because...
-      </h1>
+      <h1 className={styles.heading}>I'm leaving because...</h1>
 
       {props.map(({ x, y, rot, scale }, i) => (
         <Card

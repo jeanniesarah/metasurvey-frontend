@@ -11,12 +11,7 @@
 .cardInner {
   padding: 5px;
   background-color: white;
-  background-size: auto 85%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  width: 300px;
-  max-width: 300px;
-  max-height: 570px;
+  max-width: 250px;
   padding: 0 25px;
   will-change: transform;
   border-radius: 10px;
