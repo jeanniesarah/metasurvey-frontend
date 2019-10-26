@@ -68,9 +68,23 @@ export default props => {
             type="button"
             className={styles.submit}
             onClick={() => {
-              console.log(
-                generateAnswer(gone, feedback, data.slice(1))
+              const answer = generateAnswer(
+                gone,
+                feedback,
+                data.slice(1)
               );
+
+              fetch(
+                'https://meta-survey-app.herokuapp.com/api/survey/5db4294685535d7cc3ffa98d',
+                {
+                  method: 'POST',
+                  body: JSON.stringify(answer),
+                }
+              )
+                .then(() => alert('Saved!'))
+                .catch(console.log);
+
+              console.log(answer);
             }}
           >
             Submit
