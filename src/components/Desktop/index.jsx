@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Checkbox from './components/Checkbox';
 import styles from '../Mobile/Card/styles.module.css';
+import { generateAnswersPayload } from '../../lib/data';
 
 /*
 data example
@@ -29,7 +30,7 @@ const testData = {
 	],
 };
 
-const Desktop = ({ surveys }) => {
+const Desktop = ({ surveys, onSave }) => {
 	if (!surveys) return null;
 
 	const [answers, setAnswers] = useState({});
@@ -38,7 +39,7 @@ const Desktop = ({ surveys }) => {
 	const { title,  questions, showTextarea } = surveys;
 
 	const setSingleAnswer = (id) => (value) => { setAnswers({ ...answers, [id]: value }); }
-	const save = () => { console.log(answers, textareaText); }
+	const save = () => { onSave(generateAnswersPayload(answers, textareaText, surveys)) };
 
 	return <div>
 		<div>{ title }</div>

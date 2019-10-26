@@ -2,6 +2,11 @@ import React from 'react';
 import Desktop from './components/Desktop';
 import Mobile from './components/Mobile';
 
+const saveAnswersToServer = (payload) => {
+  // TODO POST to server here
+  console.log('payload', payload);
+};
+
 const App = () => {
   const isMobile =
     typeof window.orientation !== 'undefined' ||
@@ -16,7 +21,7 @@ const App = () => {
       .then(setSurveys);
   }
 
-  return isMobile ? <Mobile surveys={surveys} /> : <Desktop surveys={surveys} />;
+  return isMobile ? <Mobile surveys={surveys} onSave={saveAnswersToServer} /> : <Desktop surveys={surveys} onSave={saveAnswersToServer} />;
 };
 
 export default App;
