@@ -1,9 +1,11 @@
 .heading {
+  font-size: 20px;
   margin: 30px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
+  margin-top: 80px;
   line-height: 1;
   font-weight: bold;
-  text-align: center;
+  /* text-align: center; */
   color: #5871b1;
 }
 
@@ -12,7 +14,8 @@
   align-items: center;
   position: fixed;
   bottom: 0;
-  right: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .logo {
@@ -26,4 +29,12 @@
   margin-right: 10px;
   position: relative;
   top: -2px;
+}
+
+.brand {
+  position: fixed;
+  top: 20px;
+  left: 30px;
+  height: 30px;
+  width: auto;
 }

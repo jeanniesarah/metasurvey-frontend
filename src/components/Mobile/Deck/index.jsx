@@ -90,6 +90,8 @@ function Deck({ surveys }) {
 
   return (
     <>
+      <img src={logo} className={styles.brand} alt="Logo" />
+
       <h1 className={styles.heading}>{surveys.title}</h1>
       {props.map(({ x, y, rot, scale }, i) => (
         <Card
@@ -106,7 +108,7 @@ function Deck({ surveys }) {
         />
       ))}
       <div className={styles.logoContainer}>
-        <p className={styles.logoText}>Powered by</p>
+        <p className={styles.logoText}>Powered&nbsp;by</p>
         <img src={logo} className={styles.logo} alt="Logo" />
       </div>
     </>
