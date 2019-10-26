@@ -16,8 +16,12 @@
 .Illustration {
   grid-area: illustration;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.Illustration > img {
+.Illustration > svg {
+  max-width: 300px;
   width: 100%;
+  height: 100%;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Desktop.module.css';
-import illustrationSrc from './img.png';
+import { ReactComponent as Illustration } from './illustration.svg';
 import Survey from './components/Survey';
 
 const Desktop = ({ surveys, onSave }) => {
@@ -12,7 +12,7 @@ const Desktop = ({ surveys, onSave }) => {
     <div className={styles.Desktop}>
       <h1 className={styles.Title}>{title}</h1>
       <div className={styles.Illustration}>
-        <img src={illustrationSrc} alt="illustration" />
+        <Illustration />
       </div>
       <Survey surveys={surveys} onSave={onSave} />
     </div>
