@@ -1,9 +1,12 @@
 .Desktop {
   display: grid;
+  grid-template-columns: 50% 50%;
   grid-template-areas:
     'title title'
-    'illustration survey';
+    'illustration survey'
+    'feedback feedback';
   padding: 32px;
+  gap: 32px;
 }
 
 .Title {
@@ -12,18 +15,9 @@
 
 .Illustration {
   grid-area: illustration;
-  width: 50%;
+  width: 100%;
 }
 
 .Illustration > img {
   width: 100%;
-}
-
-.Survey {
-  grid-area: survey;
-  padding: 32px;
-}
-
-.CheckboxList {
-  list-style-type: none;
 }
