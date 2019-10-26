@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { animated, interpolate } from "react-spring/hooks";
-import styles from "./styles.module.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { animated, interpolate } from 'react-spring/hooks';
+import styles from './styles.module.css';
 
 class Card extends React.Component {
   render() {
@@ -16,14 +16,14 @@ class Card extends React.Component {
           transform: interpolate(
             [x, y],
             (x, y) => `translate3d(${x}px,${y}px,0)`
-          )
+          ),
         }}
       >
         <animated.div
           {...bind(i)}
           className={styles.cardInner}
           style={{
-            transform: interpolate([rot, scale], trans)
+            transform: interpolate([rot, scale], trans),
           }}
         >
           <div className={styles.card}>
@@ -40,7 +40,7 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
 };
 
 export default Card;
