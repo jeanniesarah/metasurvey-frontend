@@ -1,0 +1,29 @@
+.Desktop {
+  display: grid;
+  grid-template-areas:
+    'title title'
+    'illustration survey';
+  padding: 32px;
+}
+
+.Title {
+  grid-area: title;
+}
+
+.Illustration {
+  grid-area: illustration;
+  width: 50%;
+}
+
+.Illustration > img {
+  width: 100%;
+}
+
+.Survey {
+  grid-area: survey;
+  padding: 32px;
+}
+
+.CheckboxList {
+  list-style-type: none;
+}
