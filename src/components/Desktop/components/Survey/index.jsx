@@ -18,7 +18,7 @@ const Survey = ({ surveys, onSave }) => {
 
   return (
     <div className={styles.Survey}>
-      <h2>Why did you uninstall my App?</h2>
+      <h2 className={styles.title}>Why did you uninstall my App?</h2>
       <p>Check all that apply:</p>
       <ul className={styles.CheckboxList}>
         {questions.map(question => {

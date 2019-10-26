@@ -2,8 +2,13 @@
   grid-area: survey;
 }
 
+.title {
+  margin-bottom: 1.5em;
+}
+
 .Survey > p {
   color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 1em;
 }
 
 .CheckboxList {
@@ -13,20 +18,48 @@
 }
 
 .TextFeedback {
-  grid-area: feedback;
   margin-top: 32px;
   border: 0;
   width: 80%;
   height: 80px;
   max-width: 100%;
+  resize: none;
+  font-size: 1.3em;
+  border: 1px solid lightgrey;
+  padding: 16px;
+  border-radius: 8px;
 }
 
 .Submit {
   display: block;
   border: 0;
   font-size: 1.5em;
-  padding: 8px 32px;
-  background-color: white;
+  padding: 8px 40px;
+  background-color: #008abc;
+  color: white;
   border-radius: 32px;
-  margin-top: 16px;
+  margin-top: 24px;
+  position: relative;
+  outline: none;
+}
+
+.Submit::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255);
+  opacity: 0;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.Submit:hover::after,
+.Submit:focus::after {
+  opacity: 0.3;
+}
+
+.Submit:active::after {
+  opacity: 0.5;
 }

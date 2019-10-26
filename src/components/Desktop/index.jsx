@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './Desktop.module.css';
-import { ReactComponent as Illustration } from './illustration.svg';
 import Survey from './components/Survey';
+import PoweredBy from './components/PoweredBy';
+import logoSrc from 'components/logo.png';
 
 const Desktop = ({ surveys, onSave }) => {
   if (!surveys) return null;
@@ -10,11 +11,12 @@ const Desktop = ({ surveys, onSave }) => {
 
   return (
     <div className={styles.Desktop}>
-      <h1 className={styles.Title}>{title}</h1>
-      <div className={styles.Illustration}>
-        <Illustration />
+      <div className={styles.LogoBlock}>
+        <img src={logoSrc} alt="MetaSurvey logo" />
+        <h2 className={styles.Title}>{title}</h2>
       </div>
       <Survey surveys={surveys} onSave={onSave} />
+      <PoweredBy />
     </div>
   );
 };
