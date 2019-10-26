@@ -1,5 +1,8 @@
 export default [
   {
+    type: "custom"
+  },
+  {
     text: "It's too expensive."
   },
   {

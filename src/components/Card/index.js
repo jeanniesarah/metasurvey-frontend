@@ -6,11 +6,12 @@ import styles from "./styles.module.css";
 class Card extends React.Component {
   render() {
     const { i, x, y, rot, scale, trans, bind, data } = this.props;
-    const { text } = data[i];
+    const { text, type } = data[i];
 
-    return (
+    const isTextarea = type === "custom";
+
+    return !isTextarea ? (
       <animated.div
-        key={i}
         className={styles.cardWrapper}
         style={{
           transform: interpolate(
@@ -34,6 +35,28 @@ class Card extends React.Component {
             <p className={styles.text}>{text}</p>
           </div>
         </animated.div>
+      </animated.div>
+    ) : (
+      <animated.div
+        className={styles.cardWrapper}
+        style={{
+          transform: interpolate(
+            [x, y],
+            (x, y) => `translate3d(${x}px,${y}px,0)`
+          )
+        }}
+      >
+        <div className={styles.cardInner}>
+          <div className={styles.form}>
+            <textarea
+              className={styles.textarea}
+              placeholder="Tell us what you think..."
+            ></textarea>
+            <button type="button" className={styles.submit}>
+              Submit
+            </button>
+          </div>
+        </div>
       </animated.div>
     );
   }
