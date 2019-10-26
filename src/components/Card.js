@@ -24,6 +24,10 @@ class Card extends React.Component {
           }}
         >
           <div className="card">
+            <div className="pillbox">
+              <h5 className="red">←No</h5>
+              <h5 className="green">Yes→</h5>
+            </div>
             <h5>{text}</h5>
           </div>
         </animated.div>

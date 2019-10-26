@@ -45,7 +45,7 @@ body {
   width: 300px;
   max-width: 300px;
   max-height: 570px;
-  padding: 25px 15px;
+  padding: 0 25px;
   will-change: transform;
   border-radius: 10px;
   box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),
@@ -73,4 +73,18 @@ h5 {
 
 .slider-control-bottomcenter > ul > li > button {
   color: salmon !important;
+}
+
+.pillbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.red {
+  color: #ff4136;
+}
+
+.green {
+  color: #2ecc40;
 }
