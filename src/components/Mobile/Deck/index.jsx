@@ -88,9 +88,13 @@ function Deck({ surveys }) {
     }
   );
 
+  console.log(surveys);
+
   return (
     <>
-      <img src={logo} className={styles.brand} alt="Logo" />
+      {surveys.logo && (
+        <img src={surveys.logo} className={styles.brand} alt="Logo" />
+      )}
 
       <h1 className={styles.heading}>{surveys.title}</h1>
       {props.map(({ x, y, rot, scale }, i) => (
