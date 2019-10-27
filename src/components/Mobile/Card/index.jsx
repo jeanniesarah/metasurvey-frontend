@@ -90,7 +90,7 @@ export default props => {
                 }
               )
                 .then(() => alert('Saved!'))
-                .catch(console.log);
+                .catch(() => alert('Error occured'));
 
               console.log(answer);
             }}
