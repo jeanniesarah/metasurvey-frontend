@@ -16,7 +16,7 @@ const App = () => {
   }
 
   const saveAnswersToServer = payload => {
-    fetch(`https://meta-survey-app.herokuapp.com/api/survey/${surveyId}}`, { method: 'POST', body: payload })
+    fetch(`https://meta-survey-app.herokuapp.com/api/survey/${surveyId}`, { method: 'POST', body: JSON.stringify(payload) })
         .then(() => document.location.href='https://getmetasurvey.com');
   };
 
