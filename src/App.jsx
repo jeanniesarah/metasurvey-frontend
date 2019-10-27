@@ -16,6 +16,10 @@ const App = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const surveyId = urlParams.get('survey_id');
 
+  if (!surveyId) {
+    window.location.replace('https://getmetasurvey.com');
+  }
+
   if (!surveys) {
     fetch(
       `https://meta-survey-app.herokuapp.com/api/survey/${surveyId}`
