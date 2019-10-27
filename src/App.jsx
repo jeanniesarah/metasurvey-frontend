@@ -2,11 +2,6 @@ import React from 'react';
 import Desktop from './components/Desktop';
 import Mobile from './components/Mobile';
 
-const saveAnswersToServer = payload => {
-  // TODO POST to server here
-  console.log('payload', payload);
-};
-
 const App = () => {
   const isMobile =
     typeof window.orientation !== 'undefined' ||
@@ -19,6 +14,11 @@ const App = () => {
   if (!surveyId) {
     window.location.replace('https://getmetasurvey.com');
   }
+
+  const saveAnswersToServer = payload => {
+    fetch(`https://meta-survey-app.herokuapp.com/api/survey/${surveyId}}`, { method: 'POST', body: payload })
+        .then(() => document.location.href='https://getmetasurvey.com');
+  };
 
   if (!surveys) {
     fetch(
