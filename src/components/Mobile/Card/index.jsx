@@ -15,7 +15,7 @@ const generateAnswer = (gone, feedback, data) => ({
 
 export default props => {
   const [feedback, setFeedback] = React.useState('');
-  const { i, x, y, rot, scale, trans, bind, data, gone } = props;
+  const { i, x, y, rot, scale, trans, bind, data, gone, onSave } = props;
   const { text, type } = data[i];
 
   const isTextarea = type === 'custom';
@@ -74,25 +74,7 @@ export default props => {
                 data.slice(1)
               );
 
-              const urlParams = new URLSearchParams(
-                window.location.search
-              );
-              const surveyId = urlParams.get('survey_id');
-
-              fetch(
-                `https://meta-survey-app.herokuapp.com/api/survey/${surveyId}`,
-                {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify(answer),
-                }
-              )
-                .then(() => alert('Saved!'))
-                .catch(() => alert('Error occured'));
-
-              console.log(answer);
+              onSave(JSON.stringify(answer));
             }}
           >
             Submit

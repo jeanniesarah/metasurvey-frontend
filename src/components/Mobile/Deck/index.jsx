@@ -22,7 +22,7 @@ const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r /
     10}deg) rotateZ(${r}deg) scale(${s})`;
 
-function Deck({ surveys }) {
+const Deck = ({ surveys, onSave }) => {
   if (!surveys) return null;
 
   // Questions array should be revered to look correct. Custom question will be displayed last but goes first in array
@@ -105,6 +105,7 @@ function Deck({ surveys }) {
           data={data}
           bind={bind}
           gone={gone}
+          onSave={onSave}
         />
       ))}
       <PoweredBy />
