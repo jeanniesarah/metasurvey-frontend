@@ -25,7 +25,8 @@ const trans = (r, s) =>
 function Deck({ surveys }) {
   if (!surveys) return null;
 
-  const data = [{ type: 'custom' }].concat(surveys.questions);
+  // Questions array should be revered to look correct. Custom question will be displayed last but goes first in array
+  const data = [{ type: 'custom' }].concat(surveys.questions.slice().reverse());
 
   const [gone, setGone] = useState({});
 
@@ -84,8 +85,6 @@ function Deck({ surveys }) {
         setTimeout(() => gone.clear() || set(i => to(i)), 600);
     }
   );
-
-  console.log(surveys);
 
   return (
     <>
