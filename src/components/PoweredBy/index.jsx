@@ -6,7 +6,9 @@ const PoweredBy = () => {
   return (
     <div className={styles.poweredBy}>
       <p className={styles.logoText}>Powered&nbsp;by</p>
-      <img src={logoSrc} className={styles.logo} alt="Logo" />
+        <a href="https://getmetasurvey.com/" target="_blank">
+            <img src={logoSrc} className={styles.logo} alt="Logo" />
+        </a>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSprings } from 'react-spring/hooks';
 import { useGesture } from 'react-with-gesture';
+import PoweredBy from '../../PoweredBy';
 import styles from './styles.module.css';
 
 import Card from '../Card';
@@ -107,10 +108,7 @@ function Deck({ surveys }) {
           gone={gone}
         />
       ))}
-      <div className={styles.logoContainer}>
-        <p className={styles.logoText}>Powered&nbsp;by</p>
-        <img src={logo} className={styles.logo} alt="Logo" />
-      </div>
+      <PoweredBy />
     </>
   );
 }
