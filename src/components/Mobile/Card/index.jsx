@@ -74,7 +74,7 @@ export default props => {
                 data.slice(1)
               );
 
-              onSave(JSON.stringify(answer));
+              onSave(answer);
             }}
           >
             Submit
