@@ -6,7 +6,7 @@ import { generateAnswersPayload } from 'lib/data';
 const Survey = ({ surveys, onSave }) => {
   const [answers, setAnswers] = useState({});
   const [textareaText, setTextareaText] = useState('');
-  const { questions, showTextarea } = surveys;
+  const { title, questions, showTextarea } = surveys;
 
   const setSingleAnswer = id => value => {
     setAnswers({ ...answers, [id]: value });
@@ -18,7 +18,7 @@ const Survey = ({ surveys, onSave }) => {
 
   return (
     <div className={styles.Survey}>
-      <h2 className={styles.title}>Why did you uninstall my App?</h2>
+        <h2 className={styles.title}>{title}</h2>
       <p>Check all that apply:</p>
 
       <ul className={styles.CheckboxList}>
