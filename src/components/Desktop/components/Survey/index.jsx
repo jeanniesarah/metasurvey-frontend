@@ -6,7 +6,7 @@ import { generateAnswersPayload } from 'lib/data';
 const Survey = ({ surveys, onSave }) => {
   const [answers, setAnswers] = useState({});
   const [textareaText, setTextareaText] = useState('');
-  const { title, questions, showTextarea } = surveys;
+  const { title, questions } = surveys;
 
   const setSingleAnswer = id => value => {
     setAnswers({ ...answers, [id]: value });
@@ -32,14 +32,12 @@ const Survey = ({ surveys, onSave }) => {
         ))}
       </ul>
 
-      {showTextarea && (
         <textarea
-          className={styles.TextFeedback}
-          value={textareaText}
-          onChange={e => setTextareaText(e.target.value)}
-          placeholder="Tell us what you think..."
-        ></textarea>
-      )}
+	className={styles.TextFeedback}
+	value={textareaText}
+	onChange={e => setTextareaText(e.target.value)}
+	placeholder="Tell us what you think..."
+	/>
 
       <button className={styles.Submit} onClick={save}>
         Send
