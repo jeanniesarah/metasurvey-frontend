@@ -29,12 +29,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.cardInner:hover .pillbox {
-  opacity: 1;
 }
 
 .red {

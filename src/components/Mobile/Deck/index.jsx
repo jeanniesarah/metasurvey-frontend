@@ -22,7 +22,7 @@ const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r /
     10}deg) rotateZ(${r}deg) scale(${s})`;
 
-const Deck = ({ surveys, onSave }) => {
+const Deck = ({ surveys, onSave, isMobile }) => {
   if (!surveys) return null;
 
   // Questions array should be revered to look correct. Custom question will be displayed last but goes first in array
@@ -95,6 +95,7 @@ const Deck = ({ surveys, onSave }) => {
       <h1 className={styles.heading}>{surveys.title}</h1>
       {props.map(({ x, y, rot, scale }, i) => (
         <Card
+            isMobile={isMobile}
           key={i}
           i={i}
           x={x}

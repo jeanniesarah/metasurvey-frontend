@@ -15,7 +15,7 @@ const generateAnswer = (gone, feedback, data) => ({
 
 export default props => {
   const [feedback, setFeedback] = React.useState('');
-  const { i, x, y, rot, scale, trans, bind, data, gone, onSave } = props;
+  const { i, x, y, rot, scale, trans, bind, data, gone, onSave, isMobile } = props;
   const { text, type } = data[i];
 
   const isTextarea = type === 'custom';
@@ -38,10 +38,10 @@ export default props => {
         }}
       >
         <div className={styles.card}>
-          <div className={styles.pillbox}>
-            <p className={styles.red}>←No</p>
-            <p className={styles.green}>Yes→</p>
-          </div>
+            <div className={styles.pillbox} style={!isMobile ? { opacity: 0 } : {}}>
+              <p className={styles.red}>←No</p>
+              <p className={styles.green}>Yes→</p>
+            </div>
           <p className={styles.text}>{text}</p>
         </div>
       </animated.div>
