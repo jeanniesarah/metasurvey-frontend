@@ -5,7 +5,7 @@
   margin-top: 80px;
   line-height: 1;
   font-weight: bold;
-  /* text-align: center; */
+  text-align: center;
   color: #5871b1;
 }
 
@@ -15,4 +15,26 @@
   left: 30px;
   height: 30px;
   width: auto;
+}
+
+.desktopButtonsContainer {
+  position: absolute;
+  width: 100vw;
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.noBtnDesktop {
+  flex-basis: 20%;
+  text-align: left;
+  z-index: 99999;
+}
+
+.yesBtnDesktop {
+  flex-basis: 20%;
+  text-align: right;
+  z-index: 99999;
 }

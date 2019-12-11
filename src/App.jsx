@@ -1,6 +1,4 @@
 import React from 'react';
-import { isEmpty } from 'lodash';
-import Desktop from './components/Desktop';
 import Mobile from './components/Mobile';
 
 const saveSuccessTitle = 'Successfully saved survey results. Thank you!';
@@ -37,11 +35,12 @@ const App = () => {
     alert(result.ok ? saveSuccessTitle : saveErrorTitle);
   }
 
-  return isMobile ? (
-    <Mobile surveys={surveys} onSave={saveAnswersToServer} />
+  return <Mobile surveys={surveys} onSave={saveAnswersToServer} isMobile={isMobile} />;
+  /* return isMobile ? (
+    <Mobile surveys={surveys} onSave={saveAnswersToServer} isMobile={isMobile} />
   ) : (
     <Desktop surveys={surveys} onSave={saveAnswersToServer} />
-  );
+  ); */
 };
 
 export default App;

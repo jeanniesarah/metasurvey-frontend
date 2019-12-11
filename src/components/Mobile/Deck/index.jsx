@@ -25,12 +25,13 @@ const trans = (r, s) =>
 const Deck = ({ surveys, onSave, isMobile }) => {
   if (!surveys) return null;
 
-  // Questions array should be revered to look correct. Custom question will be displayed last but goes first in array
-  const data = [{ type: 'custom' }].concat(surveys.questions.slice().reverse());
-
   const [gone, setGone] = useState({});
 
-  const [props, set] = useSprings(data.length, i => ({
+  // Questions array should be revered to look correct. Custom question will be displayed last but goes first in array
+  const data = [{ type: 'custom' }].concat(surveys.questions.slice().reverse());
+  const nonGoneData = data.filter(dataItem => gone[dataItem.id] === undefined);
+
+  const [springsProps, setSpringsProps] = useSprings(data.length, i => ({
     ...to(i),
     from: from(i),
   }));
@@ -56,7 +57,7 @@ const Deck = ({ surveys, onSave, isMobile }) => {
         });
       }
 
-      set(i => {
+      setSpringsProps(i => {
         if (index !== i) return;
         const isGone = gone[data[index].id] !== undefined;
 
@@ -82,9 +83,25 @@ const Deck = ({ surveys, onSave, isMobile }) => {
       });
 
       if (!down && gone.size === data.length)
-        setTimeout(() => gone.clear() || set(i => to(i)), 600);
+        setTimeout(() => gone.clear() || setSpringsProps(i => to(i)), 600);
     }
   );
+
+  const setYesNoToCard = (isYes) => (e) => {
+    const dir = isYes ? 1 : -1;
+    const currentCardIndex = nonGoneData.length - 1;
+
+    setGone({
+      ...gone,
+      [data[currentCardIndex].id]: dir === 1,
+    });
+    setSpringsProps(i => {
+      if (currentCardIndex !== i) return;
+      return {
+        x: (200 + window.innerWidth) * dir,
+      };
+    });
+  };
 
   return (
     <>
@@ -93,7 +110,16 @@ const Deck = ({ surveys, onSave, isMobile }) => {
       )}
 
       <h1 className={styles.heading}>{surveys.title}</h1>
-      {props.map(({ x, y, rot, scale }, i) => (
+      {/* > 1 because last item is custom questions, don't need to show yes/no on it */}
+        {!isMobile && nonGoneData.length > 1 && <div className={styles.desktopButtonsContainer}>
+          <div className={styles.noBtnDesktop}>
+            <button size="large" onClick={setYesNoToCard(false)}>No</button>
+          </div>
+          <div className={styles.yesBtnDesktop}>
+            <button size="large" onClick={setYesNoToCard(true)}>Yes</button>
+          </div>
+        </div>}
+      {springsProps.map(({ x, y, rot, scale }, i) => (
         <Card
             isMobile={isMobile}
           key={i}

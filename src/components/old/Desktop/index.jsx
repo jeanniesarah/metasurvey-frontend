@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Desktop.module.css';
 import Survey from './components/Survey';
-import PoweredBy from '../PoweredBy';
+import PoweredBy from '../../PoweredBy';
 import logoSrc from 'components/logo.png';
 
 const Desktop = ({ surveys, onSave }) => {
