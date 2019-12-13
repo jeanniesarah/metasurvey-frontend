@@ -28,13 +28,11 @@
 }
 
 .noBtnDesktop {
-  flex-basis: 20%;
   text-align: left;
   z-index: 99999;
 }
 
 .yesBtnDesktop {
-  flex-basis: 20%;
   text-align: right;
   z-index: 99999;
 }

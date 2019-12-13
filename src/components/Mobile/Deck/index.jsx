@@ -3,6 +3,7 @@ import { useSprings } from 'react-spring/hooks';
 import { useGesture } from 'react-with-gesture';
 import PoweredBy from '../../PoweredBy';
 import styles from './styles.module.css';
+import antStyles from './antbtn.module.css';
 
 import Card from '../Card';
 
@@ -103,6 +104,8 @@ const Deck = ({ surveys, onSave, isMobile }) => {
     });
   };
 
+  const buttonClasses = `${antStyles['ant-btn']} ${antStyles['ant-btn-lg']} ${antStyles['ant-btn-primary']}`;
+
   return (
     <>
       {surveys.logo && (
@@ -113,10 +116,10 @@ const Deck = ({ surveys, onSave, isMobile }) => {
       {/* > 1 because last item is custom questions, don't need to show yes/no on it */}
         {!isMobile && nonGoneData.length > 1 && <div className={styles.desktopButtonsContainer}>
           <div className={styles.noBtnDesktop}>
-            <button size="large" onClick={setYesNoToCard(false)}>No</button>
+            <button className={`${buttonClasses} ${antStyles['ant-btn-danger']}`} onClick={setYesNoToCard(false)}>No</button>
           </div>
           <div className={styles.yesBtnDesktop}>
-            <button size="large" onClick={setYesNoToCard(true)}>Yes</button>
+            <button className={buttonClasses} size="large" onClick={setYesNoToCard(true)}>Yes</button>
           </div>
         </div>}
       {springsProps.map(({ x, y, rot, scale }, i) => (
