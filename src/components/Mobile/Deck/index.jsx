@@ -28,7 +28,7 @@ const Deck = ({ surveys, onSave, isMobile }) => {
 
   const [gone, setGone] = useState({});
 
-  const isPro = surveys.isPro;
+  const isPro = surveys.user ? surveys.user.isPro : false;
   // Questions array should be revered to look correct. Custom question will be displayed last but goes first in array
   const data = [{ type: 'custom' }].concat((surveys.questions || []).slice().reverse());
   const nonGoneData = data.filter(dataItem => gone[dataItem.id] === undefined);
