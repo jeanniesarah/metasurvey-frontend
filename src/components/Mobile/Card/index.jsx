@@ -16,7 +16,7 @@ const generateAnswer = (gone, feedback, data) => ({
 export default props => {
   const [feedback, setFeedback] = React.useState('');
   const { i, x, y, rot, scale, trans, bind, data, gone, onSave, isMobile } = props;
-  const { text, type } = data[i];
+  const { text, imageSrc, type } = data[i];
 
   const isTextarea = type === 'custom';
 
@@ -42,7 +42,10 @@ export default props => {
               <p className={styles.red}>←No</p>
               <p className={styles.green}>Yes→</p>
             </div>
-          <p className={styles.text}>{text}</p>
+            <div className={`${isMobile? styles.cardContentMobile : ''}`}>
+                  { imageSrc && <img src={imageSrc} className={styles.image} />}
+                  <p className={styles.text}>{text}</p>
+            </div>
         </div>
       </animated.div>
     </animated.div>
