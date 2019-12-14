@@ -22,7 +22,7 @@ const Survey = ({ surveys, onSave }) => {
       <p>Check all that apply:</p>
 
       <ul className={styles.CheckboxList}>
-        {questions.map(question => (
+        {(questions || []).map(question => (
           <Checkbox
             key={question.id}
             checked={answers[question.id] === true}

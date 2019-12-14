@@ -29,7 +29,7 @@ const Deck = ({ surveys, onSave, isMobile }) => {
   const [gone, setGone] = useState({});
 
   // Questions array should be revered to look correct. Custom question will be displayed last but goes first in array
-  const data = [{ type: 'custom' }].concat(surveys.questions.slice().reverse());
+  const data = [{ type: 'custom' }].concat((surveys.questions || []).slice().reverse());
   const nonGoneData = data.filter(dataItem => gone[dataItem.id] === undefined);
 
   const [springsProps, setSpringsProps] = useSprings(data.length, i => ({
