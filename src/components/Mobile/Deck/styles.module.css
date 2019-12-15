@@ -28,12 +28,23 @@
   justify-content: space-around;
 }
 
+.buttonImage {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.3;
+  vertical-align: middle;
+}
+
 .noBtnDesktop {
   text-align: left;
   z-index: 99999;
+  position: relative;
 }
 
 .yesBtnDesktop {
   text-align: right;
   z-index: 99999;
+  position: relative;
 }

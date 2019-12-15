@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSprings } from 'react-spring/hooks';
 import { useGesture } from 'react-with-gesture';
 import PoweredBy from '../../PoweredBy';
 import styles from './styles.module.css';
 import antStyles from './antbtn.module.css';
+import leftButton from './left-button.svg';
+import rightButton from './right-button.svg';
 
 import Card from '../Card';
 
@@ -105,7 +107,25 @@ const Deck = ({ surveys, onSave, isMobile }) => {
     });
   };
 
-  const buttonClasses = `${antStyles['ant-btn']} ${antStyles['ant-btn-lg']} ${antStyles['ant-btn-primary']}`;
+  const buttonClasses = `${antStyles['ant-btn']} ${antStyles['ant-btn-lg']} ${antStyles['ant-btn-primary']} ${styles.actionButton}`;
+
+  useEffect(() => {
+    function onKeyDown(event) {
+      if (nonGoneData.length <= 1) {
+        return;
+      }
+      if (event.key === 'ArrowLeft') {
+        setYesNoToCard(false)();
+      } else if (event.key === 'ArrowRight') {
+        setYesNoToCard(true)();
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    }
+  }, [nonGoneData]);
 
   return (
     <>
@@ -118,9 +138,11 @@ const Deck = ({ surveys, onSave, isMobile }) => {
         {!isMobile && nonGoneData.length > 1 && <div className={styles.desktopButtonsContainer}>
           <div className={styles.noBtnDesktop}>
             <button className={`${buttonClasses} ${antStyles['ant-btn-danger']}`} onClick={setYesNoToCard(false)}>No</button>
+            <img src={leftButton} className={styles.buttonImage} width="20px" height="20px" alt="Left button"/>
           </div>
           <div className={styles.yesBtnDesktop}>
-            <button className={buttonClasses} size="large" onClick={setYesNoToCard(true)}>Yes</button>
+            <button className={buttonClasses} onClick={setYesNoToCard(true)}>Yes</button>
+            <img src={rightButton} className={styles.buttonImage} width="20px" height="20px" alt="Right button"/>
           </div>
         </div>}
       {springsProps.map(({ x, y, rot, scale }, i) => (
