@@ -59,7 +59,7 @@ export default props => {
         ),
       }}
     >
-      <div className={`${styles.cardInner} ${ isMobile ? '': styles.cardInnerDesktop}`}>
+      <div className={`${styles.cardInner} ${styles.cardInnerCustom} ${ isMobile ? '': styles.cardInnerDesktop}`}>
         <div className={styles.form}>
           <textarea
             value={feedback}
