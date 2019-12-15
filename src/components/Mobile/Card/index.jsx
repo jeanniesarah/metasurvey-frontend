@@ -32,7 +32,7 @@ export default props => {
     >
       <animated.div
         {...bind(i)}
-        className={styles.cardInner}
+        className={`${styles.cardInner} ${ isMobile ? '': styles.cardInnerDesktop}`}
         style={{
           transform: interpolate([rot, scale], trans),
         }}
@@ -59,7 +59,7 @@ export default props => {
         ),
       }}
     >
-      <div className={styles.cardInner}>
+      <div className={`${styles.cardInner} ${ isMobile ? '': styles.cardInnerDesktop}`}>
         <div className={styles.form}>
           <textarea
             value={feedback}

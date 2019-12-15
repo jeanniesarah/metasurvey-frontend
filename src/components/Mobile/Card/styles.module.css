@@ -20,6 +20,11 @@
     0 10px 25px -10px rgba(50, 50, 73, 0.2);
 }
 
+.cardInnerDesktop {
+  width: 30vw;
+  height: 30vw;
+}
+
 .card {
   overflow: auto;
   width: 100%;
