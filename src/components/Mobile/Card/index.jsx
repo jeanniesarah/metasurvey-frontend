@@ -82,6 +82,21 @@ export default props => {
           >
             Submit
           </button>
+            <button
+                type="button"
+                className={styles.submit}
+                onClick={() => {
+                    const answer = generateAnswer(
+                        gone,
+                        '', // no textarea value is saved
+                        data.slice(1)
+                    );
+
+                    onSave(answer);
+                }}
+            >
+                Skip
+            </button>
         </div>
       </div>
     </animated.div>
