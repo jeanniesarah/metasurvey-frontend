@@ -1,9 +1,8 @@
 /* global gtag */
 import React from 'react';
+import { get } from 'lodash';
 import Mobile from './components/Mobile';
-
-const saveSuccessTitle = 'Successfully saved survey results. Thank you!';
-const saveErrorTitle = 'Something went wrong during saving';
+import Result from './components/Result';
 
 const App = () => {
   const isMobile =
@@ -24,13 +23,19 @@ const App = () => {
       gtag('event', 'submit');
     }
 
-    fetch(`https://meta-survey-app.herokuapp.com/api/survey/${surveyId}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-        .then(body => {
-          if (gtag) {
-            gtag('event', 'submit_success');
-          }
-          return setResult(body);
-        });
+    fetch(
+      `https://meta-survey-app.herokuapp.com/api/survey/${surveyId}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }
+    ).then(body => {
+      if (gtag) {
+        gtag('event', 'submit_success');
+      }
+      return setResult(body);
+    });
   };
 
   if (!surveys) {
@@ -42,10 +47,16 @@ const App = () => {
   }
 
   if (result) {
-    alert(result.ok ? saveSuccessTitle : saveErrorTitle);
+    return <Result result={result} user={get(surveys, 'user')} />;
   }
 
-  return <Mobile surveys={surveys} onSave={saveAnswersToServer} isMobile={isMobile} />;
+  return (
+    <Mobile
+      surveys={surveys}
+      onSave={saveAnswersToServer}
+      isMobile={isMobile}
+    />
+  );
   /* return isMobile ? (
     <Mobile surveys={surveys} onSave={saveAnswersToServer} isMobile={isMobile} />
   ) : (
