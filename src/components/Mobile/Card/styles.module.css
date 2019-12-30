@@ -38,11 +38,16 @@
   padding-bototm: 20px;
 }
 
+.cardContent {
+  text-align: center;
+}
+
 .cardContentMobile {
   margin-top: 80px;
 }
 
 .text {
+  text-align: left;
   font-size: 25px;
   color: #667;
 }

@@ -42,7 +42,7 @@ export default props => {
               <p className={styles.red}>←No</p>
               <p className={styles.green}>Yes→</p>
             </div>
-            <div className={`${isMobile? styles.cardContentMobile : ''}`}>
+            <div className={`${styles.cardContent} ${isMobile? styles.cardContentMobile : ''}`}>
                   { imageSrc && <img src={imageSrc} className={styles.image} />}
                   <p className={styles.text}>{text}</p>
             </div>
