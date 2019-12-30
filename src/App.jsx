@@ -1,3 +1,4 @@
+/* global gtag */
 import React from 'react';
 import Mobile from './components/Mobile';
 
@@ -19,8 +20,17 @@ const App = () => {
   }
 
   const saveAnswersToServer = payload => {
+    if (gtag) {
+      gtag('event', 'submit');
+    }
+
     fetch(`https://meta-survey-app.herokuapp.com/api/survey/${surveyId}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-        .then(body => setResult(body));
+        .then(body => {
+          if (gtag) {
+            gtag('event', 'submit_success');
+          }
+          return setResult(body);
+        });
   };
 
   if (!surveys) {
