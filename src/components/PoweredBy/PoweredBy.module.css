@@ -1,10 +1,6 @@
 .poweredBy {
   display: flex;
   align-items: center;
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .logo {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSprings } from 'react-spring/hooks';
 import { useGesture } from 'react-with-gesture';
-import PoweredBy from '../../PoweredBy';
+import Footer from '../../Footer';
 import styles from './styles.module.css';
 import antStyles from './antbtn.module.css';
 import leftButton from './left-button.svg';
@@ -30,15 +30,21 @@ const Deck = ({ surveys, onSave, isMobile }) => {
 
   const [gone, setGone] = useState({});
 
-  const isPro = surveys.user ? surveys.user.isPro : false;
   // Questions array should be revered to look correct. Custom question will be displayed last but goes first in array
-  const data = [{ type: 'custom' }].concat((surveys.questions || []).slice().reverse());
-  const nonGoneData = data.filter(dataItem => gone[dataItem.id] === undefined);
+  const data = [{ type: 'custom' }].concat(
+    (surveys.questions || []).slice().reverse()
+  );
+  const nonGoneData = data.filter(
+    dataItem => gone[dataItem.id] === undefined
+  );
 
-  const [springsProps, setSpringsProps] = useSprings(data.length, i => ({
-    ...to(i),
-    from: from(i),
-  }));
+  const [springsProps, setSpringsProps] = useSprings(
+    data.length,
+    i => ({
+      ...to(i),
+      from: from(i),
+    })
+  );
 
   const bind = useGesture(
     ({
@@ -87,11 +93,14 @@ const Deck = ({ surveys, onSave, isMobile }) => {
       });
 
       if (!down && gone.size === data.length)
-        setTimeout(() => gone.clear() || setSpringsProps(i => to(i)), 600);
+        setTimeout(
+          () => gone.clear() || setSpringsProps(i => to(i)),
+          600
+        );
     }
   );
 
-  const setYesNoToCard = (isYes) => (e) => {
+  const setYesNoToCard = isYes => e => {
     const dir = isYes ? 1 : -1;
     const currentCardIndex = nonGoneData.length - 1;
 
@@ -121,10 +130,10 @@ const Deck = ({ surveys, onSave, isMobile }) => {
       }
     }
 
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener('keydown', onKeyDown);
     return () => {
-      window.removeEventListener("keydown", onKeyDown);
-    }
+      window.removeEventListener('keydown', onKeyDown);
+    };
   }, [nonGoneData]);
 
   return (
@@ -135,19 +144,43 @@ const Deck = ({ surveys, onSave, isMobile }) => {
 
       <h1 className={styles.heading}>{surveys.title}</h1>
       {/* > 1 because last item is custom questions, don't need to show yes/no on it */}
-        {!isMobile && nonGoneData.length > 1 && <div className={styles.desktopButtonsContainer}>
+      {!isMobile && nonGoneData.length > 1 && (
+        <div className={styles.desktopButtonsContainer}>
           <div className={styles.noBtnDesktop}>
-            <button className={`${buttonClasses} ${antStyles['ant-btn-danger']}`} onClick={setYesNoToCard(false)}>No</button>
-            <img src={leftButton} className={styles.buttonImage} width="20px" height="20px" alt="Left button"/>
+            <button
+              className={`${buttonClasses} ${antStyles['ant-btn-danger']}`}
+              onClick={setYesNoToCard(false)}
+            >
+              No
+            </button>
+            <img
+              src={leftButton}
+              className={styles.buttonImage}
+              width="20px"
+              height="20px"
+              alt="Left button"
+            />
           </div>
           <div className={styles.yesBtnDesktop}>
-            <button className={buttonClasses} onClick={setYesNoToCard(true)}>Yes</button>
-            <img src={rightButton} className={styles.buttonImage} width="20px" height="20px" alt="Right button"/>
+            <button
+              className={buttonClasses}
+              onClick={setYesNoToCard(true)}
+            >
+              Yes
+            </button>
+            <img
+              src={rightButton}
+              className={styles.buttonImage}
+              width="20px"
+              height="20px"
+              alt="Right button"
+            />
           </div>
-        </div>}
+        </div>
+      )}
       {springsProps.map(({ x, y, rot, scale }, i) => (
         <Card
-            isMobile={isMobile}
+          isMobile={isMobile}
           key={i}
           i={i}
           x={x}
@@ -161,11 +194,9 @@ const Deck = ({ surveys, onSave, isMobile }) => {
           onSave={onSave}
         />
       ))}
-      {!isPro &&
-      <PoweredBy/>
-      }
+      <Footer survey={surveys} user={surveys.user} />
     </>
   );
-}
+};
 
 export default Deck;
