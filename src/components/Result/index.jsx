@@ -1,7 +1,5 @@
 import React from 'react';
-import { get } from 'lodash';
 import { Result } from 'antd';
-import PoweredBy from '../PoweredBy';
 import './ant.result.css';
 import styles from './styles.module.css';
 import Footer from '../Footer';
