@@ -4,6 +4,7 @@ import { Result } from 'antd';
 import PoweredBy from '../PoweredBy';
 import './ant.result.css';
 import styles from './styles.module.css';
+import Footer from '../Footer';
 
 const saveSuccessTitle =
   'Successfully saved survey results. Thank you!';
@@ -17,7 +18,7 @@ export default ({ result, user }) => {
         status={isOk ? 'success' : 'error'}
         title={isOk ? saveSuccessTitle : saveErrorTitle}
       />
-      {!get(user, 'isPro') && <PoweredBy />}
+      <Footer user={user} />
     </div>
   );
 };
