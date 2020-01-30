@@ -3,6 +3,9 @@ import React from 'react';
 import { get } from 'lodash';
 import Mobile from './components/Mobile';
 import Result from './components/Result';
+import config from './config/default';
+
+const apiUrl = config.api.url;
 
 const App = () => {
   const isMobile =
@@ -23,14 +26,11 @@ const App = () => {
       gtag('event', 'submit');
     }
 
-    fetch(
-      `https://meta-survey-app.herokuapp.com/api/survey/${surveyId}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      }
-    ).then(body => {
+    fetch(`${apiUrl}/survey/${surveyId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).then(body => {
       if (gtag) {
         gtag('event', 'submit_success');
       }
@@ -39,9 +39,7 @@ const App = () => {
   };
 
   if (!surveys) {
-    fetch(
-      `https://meta-survey-app.herokuapp.com/api/survey/${surveyId}`
-    )
+    fetch(`${apiUrl}/survey/${surveyId}`)
       .then(body => body.json())
       .then(setSurveys);
   }
