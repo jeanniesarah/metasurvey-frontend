@@ -7,18 +7,27 @@ import antStyles from './antbtn.module.css';
 import leftButton from './left-button.svg';
 import rightButton from './right-button.svg';
 
+import CardTextarea from '../CardTextarea';
 import Card from '../Card';
-
 import logo from '../../logo.png';
+
+/**
+ * Max number of cards on screen
+ * @type {number}
+ */
+const INDEX_ON_SCREEN_THRESHOLD = 10;
+
 // import data from '../../../data.js';
 
-const to = i => ({
-  x: 0,
-  y: i * -10,
-  scale: 1,
-  rot: -10 + Math.random() * 20,
-  delay: i * 100,
-});
+const to = (i, allCount) => {
+  return {
+    x: 0,
+    y: i * -5,
+    scale: 1,
+    rot: -10 + Math.random() * 20,
+    delay: (i - allCount + INDEX_ON_SCREEN_THRESHOLD + 1) * 100,
+  };
+};
 const from = i => ({ rot: 0, scale: 1.5, y: -1000 });
 
 const trans = (r, s) =>
@@ -41,7 +50,7 @@ const Deck = ({ surveys, onSave, isMobile }) => {
   const [springsProps, setSpringsProps] = useSprings(
     data.length,
     i => ({
-      ...to(i),
+      ...to(i, data.length),
       from: from(i),
     })
   );
@@ -186,22 +195,33 @@ const Deck = ({ surveys, onSave, isMobile }) => {
           </div>
         )}
         <div className={styles.cardsContainer}>
-          {springsProps.map(({ x, y, rot, scale }, i) => (
-            <Card
-              isMobile={isMobile}
-              key={i}
-              i={i}
-              x={x}
-              y={y}
-              rot={rot}
-              scale={scale}
-              trans={trans}
-              data={data}
-              bind={bind}
-              gone={gone}
-              onSave={onSave}
-            />
-          ))}
+          {springsProps.map(({ x, y, rot, scale }, i) => {
+            const { type } = data[i];
+            const CardComponent =
+              type === 'custom' ? CardTextarea : Card;
+            const indexOnScreen = nonGoneData.length - i - 1;
+            /*if (indexOnScreen > INDEX_ON_SCREEN_THRESHOLD) {
+              return null;
+            }*/
+            return (
+              <CardComponent
+                isMobile={isMobile}
+                key={i}
+                i={i}
+                indexOnScreen={indexOnScreen}
+                indexOnScreenThreshold={INDEX_ON_SCREEN_THRESHOLD}
+                x={x}
+                y={y}
+                rot={rot}
+                scale={scale}
+                trans={trans}
+                data={data}
+                bind={bind}
+                gone={gone}
+                onSave={onSave}
+              />
+            );
+          })}
         </div>
       </div>
       <div className={styles.blockBottom}>
