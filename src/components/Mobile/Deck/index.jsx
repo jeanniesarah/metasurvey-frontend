@@ -137,65 +137,77 @@ const Deck = ({ surveys, onSave, isMobile }) => {
   }, [nonGoneData]);
 
   return (
-    <>
+    <div className={styles.container}>
       {surveys.logo && (
-        <img src={surveys.logo} className={styles.brand} alt="Logo" />
-      )}
-
-      <h1 className={styles.heading}>{surveys.title}</h1>
-      {/* > 1 because last item is custom questions, don't need to show yes/no on it */}
-      {!isMobile && nonGoneData.length > 1 && (
-        <div className={styles.desktopButtonsContainer}>
-          <div className={styles.noBtnDesktop}>
-            <button
-              className={`${buttonClasses} ${antStyles['ant-btn-danger']}`}
-              onClick={setYesNoToCard(false)}
-            >
-              No
-            </button>
-            <img
-              src={leftButton}
-              className={styles.buttonImage}
-              width="20px"
-              height="20px"
-              alt="Left button"
-            />
-          </div>
-          <div className={styles.yesBtnDesktop}>
-            <button
-              className={buttonClasses}
-              onClick={setYesNoToCard(true)}
-            >
-              Yes
-            </button>
-            <img
-              src={rightButton}
-              className={styles.buttonImage}
-              width="20px"
-              height="20px"
-              alt="Right button"
-            />
-          </div>
+        <div className={styles.blockTop}>
+          <img
+            src={surveys.logo}
+            className={styles.brand}
+            alt="Logo"
+          />
         </div>
       )}
-      {springsProps.map(({ x, y, rot, scale }, i) => (
-        <Card
-          isMobile={isMobile}
-          key={i}
-          i={i}
-          x={x}
-          y={y}
-          rot={rot}
-          scale={scale}
-          trans={trans}
-          data={data}
-          bind={bind}
-          gone={gone}
-          onSave={onSave}
-        />
-      ))}
-      <Footer survey={surveys} user={surveys.user} />
-    </>
+
+      <div className={styles.blockCenter}>
+        <h1 className={styles.heading}>{surveys.title}</h1>
+        {/* > 1 because last item is custom questions, don't need to show yes/no on it */}
+        {!isMobile && nonGoneData.length > 1 && (
+          <div className={styles.desktopButtonsContainer}>
+            <div className={styles.noBtnDesktop}>
+              <button
+                className={`${buttonClasses} ${antStyles['ant-btn-danger']}`}
+                onClick={setYesNoToCard(false)}
+              >
+                No
+              </button>
+              <img
+                src={leftButton}
+                className={styles.buttonImage}
+                width="20px"
+                height="20px"
+                alt="Left button"
+              />
+            </div>
+            <div className={styles.yesBtnDesktop}>
+              <button
+                className={buttonClasses}
+                onClick={setYesNoToCard(true)}
+              >
+                Yes
+              </button>
+              <img
+                src={rightButton}
+                className={styles.buttonImage}
+                width="20px"
+                height="20px"
+                alt="Right button"
+              />
+            </div>
+          </div>
+        )}
+        <div className={styles.cardsContainer}>
+          {springsProps.map(({ x, y, rot, scale }, i) => (
+            <Card
+              isMobile={isMobile}
+              key={i}
+              i={i}
+              x={x}
+              y={y}
+              rot={rot}
+              scale={scale}
+              trans={trans}
+              data={data}
+              bind={bind}
+              gone={gone}
+              onSave={onSave}
+            />
+          ))}
+        </div>
+      </div>
+      <div className={styles.blockBottom}>
+        <Footer survey={surveys} user={surveys.user} />
+      </div>
+    </div>
   );
 };
 

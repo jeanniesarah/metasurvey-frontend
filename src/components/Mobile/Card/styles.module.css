@@ -1,7 +1,5 @@
 .cardWrapper {
   position: absolute;
-  width: 100vw;
-  height: 65vh;
   will-change: transform;
   display: flex;
   align-items: center;
