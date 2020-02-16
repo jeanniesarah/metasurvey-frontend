@@ -158,7 +158,17 @@ const Deck = ({ surveys, onSave, isMobile }) => {
       )}
 
       <div className={styles.blockCenter}>
-        <h1 className={styles.heading}>{surveys.title}</h1>
+        <h1
+          className={styles.heading}
+          style={{
+            // Moving title up to make sure cards won't overlap it
+            ...(data.length > INDEX_ON_SCREEN_THRESHOLD
+              ? { marginBottom: 3 * data.length }
+              : {}),
+          }}
+        >
+          {surveys.title}
+        </h1>
         {/* > 1 because last item is custom questions, don't need to show yes/no on it */}
         {!isMobile && nonGoneData.length > 1 && (
           <div className={styles.desktopButtonsContainer}>
